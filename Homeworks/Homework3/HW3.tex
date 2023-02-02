@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[a4paper,
+            bindingoffset=0.2in,
+            left=0.2in,
+            right=0.1in,
+            top=1in,
+            bottom=1in,
+            footskip=.25in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\usepackage{array}
+
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}    % Other mathematical stuff
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{multicol}	% Multi-column entries in tables
+\usepackage{bm}		% Bold maths symbols, including upright Greek
+\usepackage{pdflscape}	% Landscape pages
+\usepackage{hyperref}
+\usepackage{contour}
+\usepackage{braket}
+\setlength{\columnsep}{1cm}
+\def\black{\color{black}}
+\def\white{\color{white}}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tabularray}
+\usepackage{longtable}
+
+% Question and solution environment
+\newenvironment{question}[1]{\noindent {\bf Question #1:}} {}
+\newenvironment{soln}{\noindent {\bf Solution:}} {}
+
+\marginparwidth =0pt
+\title{Homework 3 Astr 400B}
+\author{Kush Aggarwal }
+\date{February 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{ Table for Mass breakdown for local Group }
+\begin{table}[H]
+ \centering
+ \begin{tabular}{|c|c|c|c|c|c|}
+ \hline
+ \multicolumn{6}{|c|}{Mass Breakdown of the Local Group} \\
+  \hline\hline
+  Galaxy Name & Halo Mass($10^{12} M_{sun})$ & Disk Mass ($10^{12} M_{sun})$ & Buldge Mass ($10^{12} M_{sun}$)& Total($10^{12} M_{sun}$) & $f_{bar}$ \\
+ \hline\hline
+ MW & 1.975 & 0.075 & 0.01 & 2.06 & 0.041\\
+ \hline
+ M31 & 1.921 & 0.12 & 0.019 & 2.06 & 0.067\\
+ \hline
+ M33 & 0.187 & 0.009 & 0 & 0.196 & 0.046\\
+ \hline
+ Localgroup & 4.083 & 0.204 & 0.029 & 4.316 & 0.054 \\
+ % \multicolumn{4}{|c|}{Local Group} & 1 & 1 \\
+  \hline
+   \end{tabular}
+\end{table}
+
+\section{ Extra Questions}
+\begin{question}{1}
+How does the total mass of the MW and M31 compare in this simulation? What galaxy component dominates this total mass?
+\end{question} \\
+
+
+\begin{soln}
+The total mass of MW and M$31$ is same in this simulation. The dark matter ( halo mass) component dominates most of the mass. 
+\end{soln} \\
+
+\begin{question}{2}
+How does the stellar mass of the MW and M31 compare? Which galaxy do you expect to be more luminous?
+\end{question} \\
+
+
+\begin{soln}
+ The stellar mass of M31 is greater than MW : ratio($MW/M31 = 0.59$. We know that stellar luminosity goes as : $L \propto M^{x}$ , so we expect M31 to be more luminous than MW.
+\end{soln} \\
+
+\begin{question}{3}
+How does the total dark matter mass of MW and M31 compare in this simulation (ratio)? Is this surprising, given their difference in stellar mass?
+\end{question} \\
+
+\begin{soln}
+The ratio of total dark matter mass is $MW:M31 = 1.03$ . So, their dark matter component are almost equal. So, yes this is surprising , and I think that the main reason is the Disk Mass, which is way more in M31 than MW.
+\end{soln} \\
+
+\begin{question}{4}
+What is the ratio of stellar mass to total mass for each galaxy (i.e. the Baryon fraction)? In the Universe, $\Omega b/\Omega m ~ 16 \%$ of all mass is locked up in baryons (gas and stars) vs. dark matter. How does this ratio compare to the baryon fraction you computed for each galaxy? Given that the total gas mass in the disks of these galaxies is negligible compared to the stellar mass, any ideas for why the universal baryon fraction might differ from that in these galaxies?   
+\end{question} \\
+
+\begin{soln}
+This is given by the $f_{bar}$ column in the table:
+MW : 0.041 , MW31 : 0.067 , M33 : 0.046 . 
+The given ratio of 0.16 is much larger than the baryon fractions we found for galaxies above. This is because, most of the mass is inter spread between galaxies in the form of warm hot intergalactic medium, (VIM) only $10\%$ of this is baryonic mass. 
+
+
+\end{soln}
+
+\end{document}
