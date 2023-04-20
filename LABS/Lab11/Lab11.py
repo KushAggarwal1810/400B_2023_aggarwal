@@ -444,10 +444,14 @@ class CosmologicalTools:
             Luminosity Distance (Mpc)
         """
 
+
         # FILL THIS IN
+        zo=0
+        DL = self.ComovingDistance(zo,ze)*(1+ze)
         
+        return DL
+    
         
-        return 
     
 
     # Question 4 A)
@@ -470,9 +474,11 @@ class CosmologicalTools:
             Angular Diameter Distance (Mpc)
         """
     
-        #  FILL THIS IN
-        
-        return      
+        zo = 0
+       #  FILL THIS IN
+        DA = self.ComovingDistance(zo,ze)/(1+ze)
+       
+        return DA   
     
     
     # Question 4 B) 
@@ -498,11 +504,11 @@ class CosmologicalTools:
         
         # convert angle from arcsec to radians
         angleRad = (angle*u.arcsec).to(u.rad)
-    
+        
         # FILL THIS IN
-     
-        return 
-    
+        size = self.AngularDiameterDistance(ze).to(u.kpc)*angleRad.value
+        
+        return size
     
 
 # ------------------- MAIN ---------------------- #
@@ -756,40 +762,47 @@ if __name__ == '__main__':
     # 
     #  Using the Benchmark cosmology, determine this Supernova's redshift and its Proper Distance from us.
     # 
-
+    m = 25.1 # Apparent magnitude
+    M = -19.3 # Absolute magnitude of Type Ia supernova
 
 
     # Question 3 B) 
-
+    
+    
 
 
 
     # What is the Luminosity Distance? 
     # m-M = 5*log(DL/Mpc) + 25
 
-
+    
+    DL = np.around(10**((m-M-25)/5),1)*u.Mpc
+    print(DL)
 
 
     # Now reverse engineer the problem. What redshift gives you the computed Luminosity Distance? 
     # in reality the redshift is determined by identifying the redshift of the host.  
 
-
+    SNz = 1.09444
+    print(BenchMark.LuminosityDistance(1.09444))
 
 
     # What is the proper distance to this supernova given our current rate of expansion? 
-
+    print(BenchMark.ProperDistance(0,SNz))
+    print(BenchMark.ComovingDistance(0,SNz))
 
     # ## Question 4 C) 
 
 
-
+    
     # Question 4 C)  
 
     # Angle = Size/DA
     # What is the separation between two galaxies separated by 1 arcsec at z=1 in the Benchmark Cosmology
 
 
-
+    gal_sep = np.around(BenchMark.Size(1,1),1)
+    print(gal_sep)
 
 
 
