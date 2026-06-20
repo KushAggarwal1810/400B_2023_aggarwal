@@ -94,6 +94,7 @@ function buildThumbnails() {
 }
 
 startButton.addEventListener("click", async () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   startScreen.classList.add("hidden");
   await playSong();
 });
