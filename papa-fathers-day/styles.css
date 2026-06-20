@@ -92,6 +92,29 @@ a {
   filter: saturate(0.94);
 }
 
+.hero-bg {
+  background-image:
+    linear-gradient(90deg, rgba(18, 12, 8, 0.88), rgba(18, 12, 8, 0.5)),
+    url("assets/site/cover.jpeg");
+  background-position: center 28%;
+}
+
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: clamp(92px, 13vh, 150px);
+  right: clamp(16px, 6vw, 94px);
+  width: min(34vw, 390px);
+  height: min(72vh, 660px);
+  border: 10px solid rgba(255, 248, 238, 0.9);
+  border-radius: 8px;
+  background: url("assets/site/cover.jpeg") center / contain no-repeat #211816;
+  box-shadow: var(--deep-shadow);
+  transform: rotate(2deg);
+  opacity: 0.96;
+}
+
 .start-photo {
   background-image:
     linear-gradient(180deg, rgba(18, 12, 8, 0.72), rgba(18, 12, 8, 0.9)),
@@ -105,6 +128,7 @@ a {
 .hero-bg::after {
   content: "";
   position: absolute;
+  z-index: 2;
   inset: 0;
   background:
     radial-gradient(circle at 20% 20%, rgba(244, 217, 176, 0.22), transparent 34%),
@@ -224,7 +248,7 @@ a {
 .floating-frames {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -325,7 +349,7 @@ body.music-paused .music-bars i {
 
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   align-items: center;
@@ -981,6 +1005,15 @@ main {
     padding-top: 48px;
   }
 
+  .hero-bg::before {
+    top: auto;
+    right: 18px;
+    bottom: 34px;
+    width: min(42vw, 260px);
+    height: 360px;
+    opacity: 0.72;
+  }
+
   .portrait-stage {
     min-height: 500px;
   }
@@ -1110,6 +1143,15 @@ main {
 
   .floating-frames {
     display: none;
+  }
+
+  .hero-bg::before {
+    right: 50%;
+    bottom: 24px;
+    width: min(58vw, 250px);
+    height: 310px;
+    transform: translateX(50%) rotate(1deg);
+    opacity: 0.38;
   }
 
   .time-machine {
