@@ -86,9 +86,9 @@ a {
   inset: 0;
   background-image:
     linear-gradient(90deg, rgba(18, 12, 8, 0.82), rgba(18, 12, 8, 0.34)),
-    url("assets/site/photo-17.jpeg");
+    url("assets/site/cover.jpeg");
   background-size: cover;
-  background-position: center 38%;
+  background-position: center 32%;
   filter: saturate(0.94);
 }
 
