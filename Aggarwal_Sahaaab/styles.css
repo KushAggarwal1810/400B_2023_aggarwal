@@ -422,12 +422,15 @@ body.music-paused .music-bars i {
   left: 0;
   bottom: 76px;
   transform: translateZ(80px) rotateY(18deg) rotateZ(8deg);
+  animation: photoOrbitOne 9s ease-in-out infinite;
 }
 
 .portrait.two {
   right: 4px;
   bottom: 18px;
   transform: translateZ(60px) rotateY(-18deg) rotateZ(-7deg);
+  animation: photoOrbitTwo 9s ease-in-out infinite;
+  animation-delay: 1.4s;
 }
 
 .scroll-cue {
@@ -979,6 +982,30 @@ main {
   }
 }
 
+@keyframes photoOrbitOne {
+  0%,
+  100% {
+    z-index: 4;
+    transform: translateZ(80px) rotateY(18deg) rotateZ(8deg) translateY(0);
+  }
+  50% {
+    z-index: 1;
+    transform: translateZ(-18px) rotateY(6deg) rotateZ(2deg) translateY(-18px) scale(0.88);
+  }
+}
+
+@keyframes photoOrbitTwo {
+  0%,
+  100% {
+    z-index: 1;
+    transform: translateZ(-12px) rotateY(-6deg) rotateZ(-3deg) translateY(0) scale(0.9);
+  }
+  50% {
+    z-index: 4;
+    transform: translateZ(82px) rotateY(-18deg) rotateZ(-7deg) translateY(-18px) scale(1);
+  }
+}
+
 @keyframes carouselSpin {
   to {
     transform: rotateY(-360deg);
@@ -1124,21 +1151,35 @@ main {
   }
 
   .portrait-stage {
-    min-height: 430px;
+    min-height: 390px;
+    margin-top: -10px;
   }
 
   .portrait.main {
-    width: min(285px, 78vw);
-    height: 350px;
+    left: 50%;
+    top: 18px;
+    width: min(245px, 66vw);
+    height: 315px;
+    z-index: 3;
+    transform: translateX(-50%) rotateX(2deg) rotateY(-5deg) rotateZ(-2deg);
   }
 
   .portrait.one {
-    left: 2px;
-    bottom: 54px;
+    left: 0;
+    bottom: 42px;
+    z-index: 4;
   }
 
   .portrait.two {
     right: 0;
+    bottom: 20px;
+    z-index: 2;
+  }
+
+  .portrait.small {
+    width: 122px;
+    height: 152px;
+    border-width: 6px;
   }
 
   .letter {
@@ -1179,11 +1220,20 @@ main {
 
   .hero-bg::before {
     right: 50%;
-    bottom: 24px;
-    width: min(58vw, 250px);
-    height: 310px;
+    bottom: 64px;
+    width: min(64vw, 265px);
+    height: 330px;
     transform: translateX(50%) rotate(1deg);
-    opacity: 0.38;
+    opacity: 0.9;
+    z-index: 2;
+  }
+
+  .hero-copy h2 {
+    max-width: 92vw;
+  }
+
+  .hero-text {
+    max-width: 90vw;
   }
 
   .time-machine {
