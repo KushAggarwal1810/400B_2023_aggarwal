@@ -139,6 +139,24 @@ videos.forEach((video) => {
   video.addEventListener("ended", resumeSongAfterVideo);
 });
 
+if ("IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio < 0.35 && !entry.target.paused) {
+          entry.target.pause();
+        }
+      });
+    },
+    {
+      threshold: [0, 0.35, 0.7],
+      rootMargin: "-12% 0px -12% 0px"
+    }
+  );
+
+  videos.forEach((video) => videoObserver.observe(video));
+}
+
 prevPhoto.addEventListener("click", () => showPhoto(currentPhoto - 1));
 nextPhoto.addEventListener("click", () => showPhoto(currentPhoto + 1));
 
