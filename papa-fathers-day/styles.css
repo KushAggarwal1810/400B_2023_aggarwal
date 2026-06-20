@@ -643,68 +643,13 @@ main {
   background: linear-gradient(135deg, rgba(255, 248, 238, 0.18), transparent 42%);
 }
 
-.video-shell {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  background: #111;
-}
-
 .video-card video {
   width: 100%;
-  height: 100%;
   aspect-ratio: 16 / 10;
   object-fit: contain;
   background:
     radial-gradient(circle at 50% 40%, rgba(244, 217, 176, 0.24), transparent 42%),
     #111;
-  border-bottom: 1px solid rgba(24, 19, 16, 0.12);
-}
-
-.video-poster {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 0;
-  cursor: pointer;
-  background: #111;
-}
-
-.video-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-poster::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: rgba(255, 248, 238, 0.88);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.26);
-}
-
-.video-poster::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: calc(50% + 4px);
-  top: 50%;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 25px solid var(--rose);
-  transform: translate(-50%, -50%);
-}
-
-.video-card.is-playing .video-poster {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .video-card div {

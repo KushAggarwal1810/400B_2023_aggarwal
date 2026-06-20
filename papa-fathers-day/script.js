@@ -11,7 +11,6 @@ const prevPhoto = document.querySelector("#prevPhoto");
 const nextPhoto = document.querySelector("#nextPhoto");
 
 const videos = document.querySelectorAll("video");
-const videoPosters = document.querySelectorAll(".video-poster");
 
 const photos = Array.from({ length: 28 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
@@ -113,9 +112,16 @@ musicButton.addEventListener("click", async () => {
 });
 
 videos.forEach((video) => {
-  video.addEventListener("play", () => {
-    video.closest(".video-card")?.classList.add("is-playing");
+  function resumeSongAfterVideo() {
+    const anotherVideoPlaying = Array.from(videos).some((item) => item !== video && !item.paused && !item.ended);
 
+    if (!anotherVideoPlaying && song.dataset.pausedForVideo === "true") {
+      song.dataset.pausedForVideo = "";
+      playSong();
+    }
+  }
+
+  video.addEventListener("play", () => {
     if (!song.paused) {
       song.dataset.pausedForVideo = "true";
       song.pause();
@@ -129,21 +135,8 @@ videos.forEach((video) => {
     });
   });
 
-  video.addEventListener("ended", () => {
-    video.closest(".video-card")?.classList.remove("is-playing");
-
-    if (song.dataset.pausedForVideo === "true") {
-      song.dataset.pausedForVideo = "";
-      playSong();
-    }
-  });
-});
-
-videoPosters.forEach((poster) => {
-  poster.addEventListener("click", () => {
-    const video = poster.parentElement.querySelector("video");
-    video.play();
-  });
+  video.addEventListener("pause", resumeSongAfterVideo);
+  video.addEventListener("ended", resumeSongAfterVideo);
 });
 
 prevPhoto.addEventListener("click", () => showPhoto(currentPhoto - 1));
