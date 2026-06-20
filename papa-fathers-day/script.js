@@ -10,7 +10,9 @@ const thumbGrid = document.querySelector("#thumbGrid");
 const prevPhoto = document.querySelector("#prevPhoto");
 const nextPhoto = document.querySelector("#nextPhoto");
 
-const photos = Array.from({ length: 27 }, (_, index) => {
+const videos = document.querySelectorAll("video");
+
+const photos = Array.from({ length: 28 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
   return `assets/site/photo-${number}.jpeg`;
 });
@@ -42,7 +44,8 @@ const captions = [
   "A photo that says what words cannot.",
   "The heart of our family.",
   "A blessing we get to call Papa.",
-  "Forever grateful, forever proud."
+  "Forever grateful, forever proud.",
+  "Papa, even the flowers wanted you in the frame."
 ];
 
 let currentPhoto = 0;
@@ -106,6 +109,29 @@ musicButton.addEventListener("click", async () => {
     song.pause();
     setMusicState(false);
   }
+});
+
+videos.forEach((video) => {
+  video.addEventListener("play", () => {
+    if (!song.paused) {
+      song.dataset.pausedForVideo = "true";
+      song.pause();
+      setMusicState(false);
+    }
+
+    videos.forEach((otherVideo) => {
+      if (otherVideo !== video) {
+        otherVideo.pause();
+      }
+    });
+  });
+
+  video.addEventListener("ended", () => {
+    if (song.dataset.pausedForVideo === "true") {
+      song.dataset.pausedForVideo = "";
+      playSong();
+    }
+  });
 });
 
 prevPhoto.addEventListener("click", () => showPhoto(currentPhoto - 1));
